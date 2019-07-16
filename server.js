@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // send to server
+app.use(express.static("public"))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
@@ -16,12 +17,12 @@ app.use(express.json())
 // Go to survey
 app.get("/survey", (req,res)=>{
     console.log(req.method);
-    res.send("survey is open")
+    res.sendFile(path.join(__dirname, "app/public/survey.html"))
 })
 // Go to homepage
 app.get("/*",(req,res)=>{
     console.log(req.mehotd);
-    res.send("Homepage")
+    res.sendFile(path.join(__dirname, "app/public/home.html"))
 })
 // POST
 app.post("/survey",(req,res)=>{
