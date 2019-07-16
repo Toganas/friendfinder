@@ -34,7 +34,7 @@
             <h2>Questions</h2>
 
             <div class="mt-4">1. You love to watch movies</div>
-            <select class="chosen-select mt-1 question" required id="q1">
+            <select class="mt-1 question" id="q1">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -43,8 +43,8 @@
                 <option value="5">5 (strongly agree)</option>
             </select>
 
-            <div class="mt-3">2. You love to play sports</div>
-            <select class="chosen-select mt-1 question" required id="q2">
+            <div class="mt-3">2. You enjoy having minions do your bidding.</div>
+            <select class=" mt-1 question" id="q2">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -54,7 +54,7 @@
             </select>
 
             <div class="mt-3">3. You love to read books</div>
-            <select class="chosen-select mt-1 question" required id="q3">
+            <select class=" mt-1 question" id="q3">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -64,7 +64,7 @@
             </select>
 
             <div class="mt-3">4. You hate kicking puppies</div>
-            <select class="chosen-select mt-1 question" required id="q4">
+            <select class=" mt-1 question" id="q4">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -74,7 +74,7 @@
             </select>
 
             <div class="mt-3">5. You love Overwatch</div>
-            <select class="chosen-select mt-1 question" required id="q5">
+            <select class=" mt-1 question" id="q5">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -83,8 +83,8 @@
                 <option value="5">5 (strongly agree)</option>
             </select>
 
-            <div class="mt-3">6. You hate going to the bathroom in public</div>
-            <select class="chosen-select mt-1 question" required id="q6">
+            <div class="mt-3">6. You enjoy peeing into the pool</div>
+            <select class=" mt-1 question" id="q6">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -94,7 +94,7 @@
             </select>
 
             <div class="mt-3">7. Dessert is evil and no one should eat it</div>
-            <select class="chosen-select mt-1 question" required id="q7">
+            <select class=" mt-1 question" id="q7">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -104,7 +104,7 @@
             </select>
 
             <div class="mt-3">8. You hate talking to others</div>
-            <select class="chosen-select mt-1 question" required id="q8">
+            <select class=" mt-1 question" id="q8">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -113,8 +113,9 @@
                 <option value="5">5 (strongly agree)</option>
             </select>
 
-            <div class="mt-3">9. You hate anime</div>
-            <select class="chosen-select mt-1 question" required id="q9">
+            <!-- Translated from Parseltongue: You eat cat loudly -->
+            <div class="mt-3">9. Ou giʃe pelʃis kuine (It's in parseltongue)  </div>
+            <select class=" mt-1 question" id="q9">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -124,7 +125,7 @@
             </select>
 
             <div class="mt-3">10. You love clubbing baby seals</div>
-            <select class="chosen-select mt-1 question" required id="q10">
+            <select class=" mt-1 question" id="q10">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -143,11 +144,47 @@
             <a href="api/friends">API Friends List</a> | <a href="#">GitHub Repo</a>
     </div>
 
+    <!-- Creating a Modal -->
+
+    <div class="modal fade" id="newFriend" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="meet">Meet your new friend!</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-Label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 id="friendName"></h3>
+                    <img id="friendPhoto" src="https://static.tvtropes.org/pmwiki/pub/images/Overlord.jpg" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- font Awesome -->
     <script src="https://kit.fontawesome.com/1018fe250a.js"></script>
     <!-- Javascript -->
     <script type="text/javascript">
-        $(".chosen-select").chosen();
+        // configuring chosen js
+        let config = {
+            ".question": {},
+            ".question-deselect": {
+                allow_single_deselect: true
+            },
+            ".question-no-single": {
+                disable_search_threshold: 10
+            },
+            ".question-no-results": {
+                no_results_text: "Nothing found, sorry"
+            }
+        };
+    
+      
         // capturing inputs
         $("#submit").on("click", (event) => {
             event.preventDefault();
@@ -156,7 +193,7 @@
             validation = () => {
                 let goodForm = true;
                 $(".form-control").each(function () {
-                    if($(this).val() === "") {
+                    if ($(this).val() === "") {
                         goodForm = false;
                     }
                 })
@@ -186,15 +223,19 @@
                         $("#q10").val(),
                     ]
                 };
-                // $.post("/api/friends", data, (res) => {
 
-                //     $()
-                // })
+                // using AJAX to post friends data
+                $.post("/api/friends", data, (res) => {
+
+                    $("#friendName").text(res.name);
+                    $("friendPhoto").attr("src", res.picture)
+                    $("#newFriend").modal("toggle")
+                })
             }
             else {
                 alert("Please fill out all forms before submitting!")
             }
-        })
+        });
     </script>
 
 
