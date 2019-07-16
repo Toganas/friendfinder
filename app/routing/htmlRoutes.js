@@ -12,13 +12,12 @@ module.exports = (app) =>{
 // Go to survey
 app.get("/survey", (req, res) => {
     console.log("go to Survey");
-    res.sendFile(path.join(__dirname, "/public/survey.html"))
-    res.sendFile(path.join(__dirname, "/data/friends.js"))
+    res.sendFile(path.join(__dirname, "../public/survey.html"))
 })
 
 // Go to homepage
 app.get("/*", (req, res) => {
     console.log("Go to homepage");
-    res.sendFile(path.join(__dirname, "/public/home.html"))
+    res.sendFile(path.join(__dirname, "../public/home.html"))
 })
 }
