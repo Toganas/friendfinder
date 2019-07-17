@@ -10,6 +10,7 @@ module.exports = (app) => {
     // POST
     app.post("/api/friends", (req, res) => {
         friendsData.push(req.body);
+        console.log(req.body);
         res.json(true);
     })
 
