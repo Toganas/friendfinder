@@ -16,7 +16,7 @@ app.get("/survey", (req, res) => {
 })
 
 // Go to homepage
-app.get("/*", (req, res) => {
+app.get("/", (req, res) => {
     console.log("Go to homepage");
     res.sendFile(path.join(__dirname, "../public/home.html"))
 })

@@ -9,9 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <!-- Chosen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css"
+        integrity="sha256-0LjJurLJoa1jcHaRwMDnX2EQ8VpgpUMFT/4i+TEtLyc=" crossorigin="anonymous" />
+
+
     <title>Friend Finder</title>
 </head>
 
@@ -34,7 +38,7 @@
             <h2>Questions</h2>
 
             <div class="mt-4">1. You hate living under abandoned castles</div>
-            <select class="mt-1 question" id="q1">
+            <select class="mt-1 chosen-select" id="q1">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -44,7 +48,7 @@
             </select>
 
             <div class="mt-3">2. You enjoy having minions do your bidding.</div>
-            <select class=" mt-1 question" id="q2">
+            <select class=" mt-1 chosen-select" id="q2">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -54,7 +58,7 @@
             </select>
 
             <div class="mt-3">3. You love potatoes</div>
-            <select class=" mt-1 question" id="q3">
+            <select class=" mt-1 chosen-select" id="q3">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -64,7 +68,7 @@
             </select>
 
             <div class="mt-3">4. You hate kicking puppies</div>
-            <select class=" mt-1 question" id="q4">
+            <select class=" mt-1 chosen-select" id="q4">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -74,7 +78,7 @@
             </select>
 
             <div class="mt-3">5. You love Overwatch</div>
-            <select class=" mt-1 question" id="q5">
+            <select class=" mt-1 chosen-select" id="q5">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -84,7 +88,7 @@
             </select>
 
             <div class="mt-3">6. You enjoy peeing into the pool</div>
-            <select class=" mt-1 question" id="q6">
+            <select class=" mt-1 chosen-select" id="q6">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -94,7 +98,7 @@
             </select>
 
             <div class="mt-3">7. Dessert is evil and no one should eat it</div>
-            <select class=" mt-1 question" id="q7">
+            <select class=" mt-1 chosen-select" id="q7">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -104,7 +108,7 @@
             </select>
 
             <div class="mt-3">8. You hate talking to others</div>
-            <select class=" mt-1 question" id="q8">
+            <select class=" mt-1 chosen-select" id="q8">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -115,7 +119,7 @@
 
             <!-- Translated from Parseltongue: You eat cat loudly -->
             <div class="mt-3">9. Ou giʃe pelʃis kuine (It's in parseltongue) </div>
-            <select class=" mt-1 question" id="q9">
+            <select class=" mt-1 chosen-select" id="q9">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -125,7 +129,7 @@
             </select>
 
             <div class="mt-3">10. You love clubbing baby seals</div>
-            <select class=" mt-1 question" id="q10">
+            <select class=" mt-1 chosen-select" id="q10">
                 <option value=""></option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -146,14 +150,13 @@
 
     <!-- Creating a Modal -->
 
-    <div class="modal fade" id="newFriend" tabindex="-1" role="dialog">
+    <div class="modal fade" id="newFriend" role="dialog">
         <div class="modal-dialog">
+            <!-- modal content -->
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title" id="meet">Meet your new friend!</h2>
-                    <button type="button" class="close" data-dismiss="modal" aria-Label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="close" data-dismiss="modal">&times; </button>
                 </div>
                 <div class="modal-body">
                     <h3 id="friendName"></h3>
@@ -165,13 +168,22 @@
             </div>
         </div>
     </div>
-
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- chosen javaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"
+        integrity="sha256-c4gVE6fn+JRKMRvqjoDp+tlG4laudNYrXI1GncbfAYY=" crossorigin="anonymous"></script>
     <!-- font Awesome -->
     <script src="https://kit.fontawesome.com/1018fe250a.js"></script>
+    <!-- bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <!-- Javascript -->
     <script type="text/javascript">
         // configuring chosen js
-        question.chosen({
+        $(".chosen-select").chosen({
             allow_single_deselect: true,
             disable_search_threshold: 10,
             no_results_text: "Nothing found, sorry"
@@ -182,50 +194,54 @@
             event.preventDefault();
 
             // Validating Form
-            validation = () => {
-                let goodForm = true;
-                $(".form-control").each(function () {
-                    if ($(this).val() === "") {
-                        goodForm = false;
-                    }
-                })
+            // validation = () => {
+            //     let goodForm = true;
+            //     $(".form-control").each(function () {
+            //         if ($(this).val() === "") {
+            //             goodForm = false;
+            //         }
+            //     })
 
-                $(".question").each(() => {
-                    if ($(this).val() === "") {
-                        goodForm = false;
-                    }
-                })
-                return goodForm;
-            }
+            //     $(".chosen-select").each(() => {
+            //         if ($(this).val() === "") {
+            //             goodForm = false;
+            //         }
+            //     })
+            //     return goodForm;
+            // }
             // if validation is true, capture all the data
-            if (validation()) {
-                let data = {
-                    name: $("#name").val().trim(),
-                    picture: $("#picture").val().trim(),
-                    answers: [
-                        $("#q1").val(),
-                        $("#q2").val(),
-                        $("#q3").val(),
-                        $("#q4").val(),
-                        $("#q5").val(),
-                        $("#q6").val(),
-                        $("#q7").val(),
-                        $("#q8").val(),
-                        $("#q9").val(),
-                        $("#q10").val(),
-                    ]
-                };
+            let userData = {
+                name: $("#name").val(),
+                picture: $("#picture").val(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                    $("#q3").val(),
+                    $("#q4").val(),
+                    $("#q5").val(),
+                    $("#q6").val(),
+                    $("#q7").val(),
+                    $("#q8").val(),
+                    $("#q9").val(),
+                    $("#q10").val(),
+                ]
+            };
+            let currentURL = window.location.origin;
 
-                // using AJAX to post friends data
-                $.post("/api/friends", data, (res) => {
-                    $("#friendName").text(res.name);
-                    $("friendPhoto").attr("src", res.picture)
-                    $("#newFriend").modal("toggle")
-                })
-            }
-            else {
-                alert("Please fill out entire form before submitting!")
-            }
+            // using AJAX to post friends data
+            $.post(currentURL + "/api/friends", userData, (data)=> {
+                // show the best match
+                $("#friendName").text(data.name);
+                $("#friendPhoto").attr("src", data.picture);
+                // make the modal appear
+                $("#newFriend").modal("toggle");
+            });
+            // if (validation()) {
+
+            // }
+            // else {
+            //     alert("Please fill out entire form before submitting!")
+            // }
         });
 
     </script>

@@ -1,4 +1,4 @@
-let friendsData = require("../data/friends")
+let friendsData = require("../data/friends.js")
 
 
 module.exports = (app) => {
@@ -9,36 +9,41 @@ module.exports = (app) => {
 
     // POST
     app.post("/api/friends", (req, res) => {
-        let newFriend = {
+        // saying who the new friend is based on the answers
+        let bestMatch = {
             name: "",
             picture: "",
             newDifference: 100000000
         };
 
+        // taking the result from the survey post
         let data = req.body
         let newScores = data.scores;
-        let newName = data.name;
-        let newPicture = data.picture;
 
+        // let newName = data.name;
+        // let newPicture = data.picture;
+
+        // used to calculate difference between users
         let totalDifference = 0;
-
-        for (var i = 0; i < friendsData.length -1; i++){
+        // loop through friend possibilities
+        for (var i = 0; i < friendsData.length; i++) {
+            console.log(friendsData[i]);
             totalDifference = 0;
-
-            for (var j=0; j <10; j++) {
-                totalDifference += Math.abs(parseInt(newScores[j] - parseInt(friendsData[j])));
-                if (totalDifference <= newFriend.newDifference) {
-                    newFriend.name = friendsData[i].name;
-                    newFriend.picture = friendsData[i].picture;
-                    newFriend.newDifference = totalDifference;
+            // loop through each friend
+            for (var j = 0; j < friendsData[i].scores[j]; j++) {
+                // difference between scores, getting the absolute value
+                totalDifference += Math.abs(parseInt(newScores[j]) - parseInt(friendsData[i].scores[j]));
+                if (totalDifference <= bestMatch.newDifference) {
+                    bestMatch.name = friendsData[i].name;
+                    bestMatch.picture = friendsData[i].picture;
+                    bestMatch.newDifference = totalDifference;
                 }
             }
         }
 
-
         friendsData.push(data);
-        
-        res.json(newFriend);
+
+        res.json(bestMatch);
     })
 
 }
