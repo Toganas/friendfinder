@@ -177,7 +177,6 @@
             no_results_text: "Nothing found, sorry"
         });
 
-
         // capturing inputs
         $("#submit").on("click", (event) => {
             event.preventDefault();
@@ -219,16 +218,16 @@
 
                 // using AJAX to post friends data
                 $.post("/api/friends", data, (res) => {
-
                     $("#friendName").text(res.name);
                     $("friendPhoto").attr("src", res.picture)
                     $("#newFriend").modal("toggle")
                 })
             }
             else {
-                alert("Please fill out all forms before submitting!")
+                alert("Please fill out entire form before submitting!")
             }
         });
+
     </script>
 
 
