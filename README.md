@@ -28,4 +28,8 @@ This app took more out of me than I originally thought it would, so it's very bo
 
 ## Question concept
 
-As I wanted to at least have a little fun with it, I gave this app some questions that I thought were befitting an evil overlord.  
+As I wanted to at least have a little fun with it, I gave this app some questions that I thought were befitting an evil overlord.  This gives the app a little bit of flare and makes it a little more than just a friend finder.  I call it a messed up friend finder due to the fact that some of the questions/statements are a bit messed up and whomever you match with has got to have a bit of a screw loose somewhere.
+
+## Final Statement
+
+I hope you have fun playing with the app.  All coding is mine, but I had help from outside sources when I got stuck, such as looking at other people's products or videos.  I also got home from classmates/TA's while working on it.  I'm sure you'll enjoy the app more than I enjoyed making it.
