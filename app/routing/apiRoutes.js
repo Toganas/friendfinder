@@ -20,9 +20,6 @@ module.exports = (app) => {
         let data = req.body
         let newScores = data.scores;
 
-        // let newName = data.name;
-        // let newPicture = data.picture;
-
         // used to calculate difference between users
         let totalDifference = 0;
         // loop through friend possibilities
