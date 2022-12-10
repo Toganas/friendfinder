@@ -20,6 +20,6 @@
   "homepage": "https://github.com/Toganas/friendfinder#readme",
   "dependencies": {
     "ajax": "0.0.4",
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
